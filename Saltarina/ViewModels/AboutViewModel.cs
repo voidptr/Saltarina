@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Saltarina.MouseHook;
 using Saltarina.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -37,12 +38,23 @@ namespace Saltarina.ViewModels
         }
 
         private ILogger<AboutViewModel> _logger;
-        public AboutViewModel(ILogger<AboutViewModel> logger)
+        private IMouseHook _mouseHook;
+        public AboutViewModel(ILogger<AboutViewModel> logger,
+            IMouseHook mouseHook)
         {
             _logger = logger;
+            _mouseHook = mouseHook;
+
+            _mouseHook.MouseMove += _mouseHook_MouseMove;
+
             AboutBoxText = "YAOOOOO";
 
 
+        }
+
+        private void _mouseHook_MouseMove(object sender, MouseMoveEventArgs e)
+        {
+            AboutBoxMouseDemoText = $"X:{e.X}, Y:{e.Y}";
         }
 
         /// <summary>
