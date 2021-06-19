@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Saltarina.UserControls.About"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saltarina.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+            <Label DockPanel.Dock="Top" x:Name="AboutBox_Label" Content="About Saltarina!"/>
+            <TextBlock DockPanel.Dock="Top" x:Name="AboutBox_Content" Text="{Binding AboutBoxText, FallbackValue='Fallback About Box', TargetNullValue='Null :('}" />
+            <TextBlock DockPanel.Dock="Bottom" x:Name="AboutBox_MouseDemo" Text="{Binding AboutBoxMouseDemoText, FallbackValue='Fallback Mouse Demo', TargetNullValue='Null :('}" />
+        </DockPanel>
+    </Grid>
+</UserControl>
