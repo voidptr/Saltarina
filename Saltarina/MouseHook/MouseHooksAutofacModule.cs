@@ -3,7 +3,7 @@ using Gma.System.MouseKeyHook;
 
 namespace Saltarina.MouseHook
 {
-    class MouseHooksAutofacModule : Module
+    public class MouseHooksAutofacModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
