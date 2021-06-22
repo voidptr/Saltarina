@@ -12,6 +12,7 @@ namespace Saltarina.MouseHook
     {
         private ILogger<MouseHook> _logger;
         private IKeyboardMouseEvents _globalHook;
+        private bool disposedValue;
 
         public event EventHandler<MouseMoveEventArgs> MouseMove;
 
@@ -27,6 +28,26 @@ namespace Saltarina.MouseHook
         private void _globalHook_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             MouseMove?.Invoke(this, new MouseMoveEventArgs() { X = e.X, Y = e.Y });
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    _globalHook.MouseMove -= _globalHook_MouseMove;
+                }
+                _globalHook.Dispose();
+                _globalHook = null;
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {            
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 

@@ -10,6 +10,10 @@ namespace Saltarina.Screens
             builder.RegisterType<ScreenMapper>()
                 .As<IScreenMapper>()
                 .SingleInstance();
+
+            builder.RegisterType<ScreenManager>()
+                .As<IScreenManager>()
+                .SingleInstance();
         }
     }
 }

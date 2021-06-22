@@ -2,7 +2,7 @@
 
 namespace Saltarina.MouseHook
 {
-    public interface IMouseHook
+    public interface IMouseHook : IDisposable
     {
         event EventHandler<MouseMoveEventArgs> MouseMove;
     }
