@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Saltarina.Screens
 {
-    public interface IScreenManager : IDisposable
+    public interface IDisplayManager : IDisposable
     {
     }
 }

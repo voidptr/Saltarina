@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Saltarina.Resources" 
+                    xmlns:system="clr-namespace:System;assembly=netstandard">
+    <!-- String resource that can be localized -->
+    <system:String x:Key="generic_main_window_title">Saltarina</system:String>
+    <system:String x:Key="generic_main_window_settings_tab_title">Settings</system:String>
+    <system:String x:Key="generic_main_window_about_tab_title">About</system:String>
+    <system:String x:Key="generic_about_window_title">About Saltarina!</system:String>
+
+</ResourceDictionary>

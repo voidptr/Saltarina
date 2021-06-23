@@ -3,18 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Saltarina" xmlns:uc="clr-namespace:Saltarina.UserControls" 
+        xmlns:local="clr-namespace:Saltarina" 
+        xmlns:uc="clr-namespace:Saltarina.UserControls" 
         mc:Ignorable="d"
-        Title="Saltarina" Height="215" Width="300">
-    <Grid>
+        Title="{DynamicResource generic_main_window_title}" 
+        Height="215" Width="400">
+    <Grid>        
         <DockPanel>
             <TabControl>
-                <TabItem Header="About">
+                <TabItem Header="{DynamicResource generic_main_window_about_tab_title}">
                     <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
                         <uc:About DataContext="{Binding AboutViewModel_DataContext}"/>
                     </DockPanel>
                 </TabItem>
-                <TabItem Header="Settings"/>
+                <TabItem Header="{DynamicResource generic_main_window_settings_tab_title}"/>
             </TabControl>
         </DockPanel>
     </Grid>

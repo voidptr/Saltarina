@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="0,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
-            <Label DockPanel.Dock="Top" x:Name="AboutBox_Label" Content="About Saltarina!"/>
+            <Label DockPanel.Dock="Top" x:Name="AboutBox_Label" Content="{DynamicResource generic_about_window_title}"/>
             <TextBlock DockPanel.Dock="Top" x:Name="AboutBox_Content" Text="{Binding AboutBoxText, FallbackValue='Fallback About Box', TargetNullValue='Null :('}" />
             <TextBlock DockPanel.Dock="Bottom" x:Name="AboutBox_MouseDemo" Text="{Binding AboutBoxMouseDemoText, FallbackValue='Fallback Mouse Demo', TargetNullValue='Null :('}" />
         </DockPanel>

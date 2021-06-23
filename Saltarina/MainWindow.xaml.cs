@@ -12,14 +12,14 @@ namespace Saltarina
     public partial class MainWindow : Window
     {
         private ILogger<MainWindow> _logger;
-        private IScreenManager _screenManager;
+        private IDisplayManager _screenManager;
         private IMouseControl _mouseControl;
 
         public IAboutViewModel AboutViewModel_DataContext { get; set; }
 
         public MainWindow(ILogger<MainWindow> logger,
             IAboutViewModel aboutViewModel,
-            IScreenManager screenManager,
+            IDisplayManager screenManager,
             IMouseControl mouseControl)
         {
             _logger = logger;

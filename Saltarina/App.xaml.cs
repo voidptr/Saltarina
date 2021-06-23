@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Hardcodet.Wpf.TaskbarNotification;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
@@ -19,8 +20,10 @@ namespace Saltarina
     /// </summary>
     public partial class App : Application
     {
+        private TaskbarIcon tb;
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            tb = (TaskbarIcon)FindResource("TrayIcon");
             try
             {
                 Serilog.Debugging.SelfLog.Enable(Console.Error);
