@@ -29,9 +29,7 @@ namespace Saltarina
             InitializeComponent();
             DataContext = this;
 
-            AboutViewModel_DataContext = aboutViewModel;
-
-            
+            AboutViewModel_DataContext = aboutViewModel;            
         }
     }
 }

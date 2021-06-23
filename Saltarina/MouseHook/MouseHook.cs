@@ -16,6 +16,9 @@ namespace Saltarina.MouseHook
 
         public event EventHandler<MouseMoveEventArgs> MouseMove;
 
+        /// <summary>
+        /// Hooks into the global mouse event hooks and raises its own simple event when the mouse moves.
+        /// </summary>
         public MouseHook(ILogger<MouseHook> logger,
             IKeyboardMouseEvents globalHook)
         {

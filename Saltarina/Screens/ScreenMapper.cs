@@ -12,50 +12,44 @@ namespace Saltarina.Screens
     {
         private ILogger<ScreenMapper> _logger;
         private Func<ScreenModel> _screenModelFactory;
+        private IScreenWrapper _screenWrapper;
 
         public Dictionary<string, ScreenModel> Screens { get; } = new Dictionary<string, ScreenModel>();
 
         public bool IsMapped { get; private set; }
 
+        /// <summary>
+        /// Builds a map of the connected displays.
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="screenModelFactory"></param>
+        /// <param name="totalScreenBounds"></param>
+        /// <param name="screenWrapper"></param>
         public ScreenMapper(ILogger<ScreenMapper> logger,
-            Func<ScreenModel> screenModelFactory)
+            Func<ScreenModel> screenModelFactory,
+            IScreenWrapper screenWrapper)
         {
             _logger = logger;
             _screenModelFactory = screenModelFactory;
-        }
-        private Rectangle _totalBounds;
-        public Rectangle TotalBounds
-        {
-            get
-            {
-                if (_totalBounds == Rectangle.Empty)
-                {
-                    _totalBounds = Screen.AllScreens.Select(screen => screen.Bounds)
-                   .Aggregate(Rectangle.Union);
-                }
-                return _totalBounds;
-            }
-            private set
-            {
-                _totalBounds = value;
-            }
+            _screenWrapper = screenWrapper;
+
+            Map();
         }
 
         public void Map()
         {
-            _logger.LogInformation($"{TotalBounds}");
-
             IsMapped = false;
 
+            _screenWrapper.Reset();
+            _logger.LogInformation($"{_screenWrapper.TotalBounds}");
+
             Screens.Clear();
-            foreach (var scrn in Screen.AllScreens)
+            foreach (var scrn in _screenWrapper.AllScreens)
             {
                 var model = _screenModelFactory();
                 model.Screen = scrn;
                 model.Map();
                 Screens.Add(scrn.DeviceName, model);
-
-                //break;
             }
 
             IsMapped = true;

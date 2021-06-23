@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Saltarina.Screens
@@ -15,6 +12,9 @@ namespace Saltarina.Screens
         Upward,
         Downward
     }
+    /// <summary>
+    /// Model for mapping each screen.
+    /// </summary>
     public class ScreenModel
     {        
         public Screen Screen { get; set; }
@@ -29,12 +29,13 @@ namespace Saltarina.Screens
             { { Direction.Leftward, false }, { Direction.Rightward, false }, { Direction.Upward, false }, { Direction.Downward, false }  };
 
         private ILogger<ScreenModel> _logger;
-        private IScreenMapper _screenMapper;
+        private IScreenWrapper _screenWrapper;
 
-        public ScreenModel(ILogger<ScreenModel> logger, IScreenMapper screenMapper)
+        public ScreenModel(ILogger<ScreenModel> logger, 
+            IScreenWrapper screenWrapper)
         {
-            _screenMapper = screenMapper;
             _logger = logger;
+            _screenWrapper = screenWrapper;
         }
 
         public void Map()
@@ -46,7 +47,7 @@ namespace Saltarina.Screens
             _logger.LogInformation($"{Screen.DeviceName}");
             _logger.LogInformation($"{Screen.ExtendedScreenBounds()}");
 
-            var totalBounds = _screenMapper.TotalBounds;
+            var totalBounds = _screenWrapper.TotalBounds;
 
             IsEdges[Direction.Leftward] = Screen.Bounds.Left.Equals(totalBounds.Left);
             IsEdges[Direction.Rightward] = Screen.Bounds.Right.Equals(totalBounds.Right);
@@ -59,8 +60,7 @@ namespace Saltarina.Screens
                     _logger.LogInformation($"Is {direction} Edge!");
             }
 
-
-            foreach (var candidate in Screen.AllScreens)
+            foreach (var candidate in _screenWrapper.AllScreens)
             {
                 if (Screen.Bounds.Equals(candidate.Bounds))
                 {

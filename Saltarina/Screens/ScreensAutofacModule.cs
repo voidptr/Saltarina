@@ -17,6 +17,11 @@ namespace Saltarina.Screens
 
             builder.RegisterType<ScreenModel>()
                 .AsSelf();
+
+            builder.RegisterType<ScreenWrapper>()
+                .As<IScreenWrapper>()
+                .SingleInstance();
+
         }
     }
 }

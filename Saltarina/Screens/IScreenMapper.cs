@@ -7,7 +7,6 @@ namespace Saltarina.Screens
     {
         bool IsMapped { get; }
         Dictionary<string, ScreenModel> Screens { get; }
-        Rectangle TotalBounds { get; }
 
         void Map();
     }

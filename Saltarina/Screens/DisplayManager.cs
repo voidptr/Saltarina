@@ -3,21 +3,22 @@ using Microsoft.Win32;
 
 namespace Saltarina.Screens
 {
-    public class ScreenManager : IScreenManager
+    public class DisplayManager : IDisplayManager
     {
-        private ILogger<ScreenManager> _logger;
+        private ILogger<DisplayManager> _logger;
         private IScreenMapper _screenMapper;
         private bool disposedValue;
 
-        public ScreenManager(ILogger<ScreenManager> logger,
+        /// <summary>
+        /// Listens for changes to the display settings and prompts a re-mapping
+        /// </summary>
+        public DisplayManager(ILogger<DisplayManager> logger,
             IScreenMapper screenMapper)
         {
             _logger = logger;
             _screenMapper = screenMapper;
 
             SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
-
-            _screenMapper.Map();
         }
 
         private void SystemEvents_DisplaySettingsChanged(object sender, System.EventArgs e)

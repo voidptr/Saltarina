@@ -20,6 +20,12 @@ namespace Saltarina.MouseControl
         private Screen _currentScreen;
         private bool disposedValue;
 
+        /// <summary>
+        /// Watches for hits to the screen boundary, and redirects the mouse as appropriate.
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="mouseHook"></param>
+        /// <param name="screenMapper"></param>
         public MouseControl(ILogger<MouseControl> logger,
             IMouseHook mouseHook, 
             IScreenMapper screenMapper)
@@ -97,7 +103,6 @@ namespace Saltarina.MouseControl
 
         public void Dispose()
         {
-            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
@@ -108,11 +113,6 @@ namespace Saltarina.MouseControl
         [DllImport("user32")]
         public static extern int SetCursorPos(int x, int y);
 
-        /// <summary>
-        /// moves the mouse
-        /// </summary>
-        /// <param name="x">x position to move to</param>
-        /// <param name="y">y position to move to</param>
         public static void MouseMove(int x, int y)
         {
             SetCursorPos(x, y);
