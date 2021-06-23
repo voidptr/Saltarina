@@ -14,6 +14,9 @@ namespace Saltarina.Screens
             builder.RegisterType<ScreenManager>()
                 .As<IScreenManager>()
                 .SingleInstance();
+
+            builder.RegisterType<ScreenModel>()
+                .AsSelf();
         }
     }
 }

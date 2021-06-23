@@ -72,7 +72,7 @@ namespace Saltarina
                 var logconfig = new LoggerConfiguration()
                     .WriteTo.File(logfile);
 
-                LogEventLevel level = LogEventLevel.Debug;
+                LogEventLevel level = LogEventLevel.Information;
                 logconfig = logconfig.MinimumLevel.Is(level);
                 
                 return logconfig.CreateLogger();
