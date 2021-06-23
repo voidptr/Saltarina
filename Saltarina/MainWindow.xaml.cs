@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Saltarina.MouseControl;
 using Saltarina.Screens;
 using Saltarina.ViewModels;
 using System.Windows;
@@ -12,15 +13,18 @@ namespace Saltarina
     {
         private ILogger<MainWindow> _logger;
         private IScreenManager _screenManager;
+        private IMouseControl _mouseControl;
 
         public IAboutViewModel AboutViewModel_DataContext { get; set; }
 
         public MainWindow(ILogger<MainWindow> logger,
             IAboutViewModel aboutViewModel,
-            IScreenManager screenManager)
+            IScreenManager screenManager,
+            IMouseControl mouseControl)
         {
             _logger = logger;
             _screenManager = screenManager;
+            _mouseControl = mouseControl;
 
             InitializeComponent();
             DataContext = this;

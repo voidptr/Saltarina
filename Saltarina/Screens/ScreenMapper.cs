@@ -7,12 +7,15 @@ using System.Windows.Forms;
 
 namespace Saltarina.Screens
 {
+
     public class ScreenMapper : IScreenMapper
     {
         private ILogger<ScreenMapper> _logger;
         private Func<ScreenModel> _screenModelFactory;
 
-        public Dictionary<string, ScreenModel> Screens = new Dictionary<string, ScreenModel>();
+        public Dictionary<string, ScreenModel> Screens { get; } = new Dictionary<string, ScreenModel>();
+
+        public bool IsMapped { get; private set; }
 
         public ScreenMapper(ILogger<ScreenMapper> logger,
             Func<ScreenModel> screenModelFactory)
@@ -23,7 +26,8 @@ namespace Saltarina.Screens
         private Rectangle _totalBounds;
         public Rectangle TotalBounds
         {
-            get {
+            get
+            {
                 if (_totalBounds == Rectangle.Empty)
                 {
                     _totalBounds = Screen.AllScreens.Select(screen => screen.Bounds)
@@ -41,6 +45,8 @@ namespace Saltarina.Screens
         {
             _logger.LogInformation($"{TotalBounds}");
 
+            IsMapped = false;
+
             Screens.Clear();
             foreach (var scrn in Screen.AllScreens)
             {
@@ -51,6 +57,8 @@ namespace Saltarina.Screens
 
                 //break;
             }
-        }        
+
+            IsMapped = true;
+        }
     }
 }

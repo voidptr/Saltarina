@@ -64,23 +64,23 @@ namespace Saltarina.Screens
             {
                 if (Screen.Bounds.Equals(candidate.Bounds))
                 {
-                    _logger.LogDebug(" It's me. Skipping.");
+                    _logger.LogTrace(" It's me. Skipping.");
                     continue;
                 }
 
-                _logger.LogDebug($">> Candidate {candidate.DeviceName}");
-                _logger.LogDebug($"   {candidate.ExtendedScreenBounds()}");
+                _logger.LogTrace($">> Candidate {candidate.DeviceName}");
+                _logger.LogTrace($"   {candidate.ExtendedScreenBounds()}");
 
                 // check each direction
                 foreach (Direction direction in Enum.GetValues(typeof(Direction)))
                 {
-                    _logger.LogDebug($"   Checking {direction}");
+                    _logger.LogTrace($"   Checking {direction}");
                     if (!IsEdges[direction] && !Connected[direction])
                     {
                         if (Screen.Connects(direction, candidate))
                         {
                             Connected[direction] = true;
-                            _logger.LogDebug($"     I'm connected to you!");
+                            _logger.LogTrace($"     I'm connected to you!");
                         }
                         else
                         {
@@ -89,19 +89,19 @@ namespace Saltarina.Screens
                                 if (Candidates[direction] == null)
                                 {
                                     Candidates[direction] = candidate;
-                                    _logger.LogDebug($"     First Potential candidate! {candidate.DeviceName}");
+                                    _logger.LogTrace($"     First Potential candidate! {candidate.DeviceName}");
                                 }
                                 else if (Screen.Distance(direction, candidate) < Screen.Distance(direction, Candidates[direction]))
                                 {
                                     Candidates[direction] = candidate;
-                                    _logger.LogDebug($"     Candidate superceded! {candidate.DeviceName}");
+                                    _logger.LogTrace($"     Candidate superceded! {candidate.DeviceName}");
                                 }
                             }
                         }
                     }
                     else
                     {
-                        _logger.LogDebug($"     I'm either an edge or already connected in this direction, skipping.");
+                        _logger.LogTrace($"     I'm either an edge or already connected in this direction, skipping.");
                     }
                 }
             }
@@ -131,6 +131,20 @@ namespace Saltarina.Screens
     }
     public static class ScreenExtensions
     {    
+        public static Direction? IsOutside(this Screen screen, System.Drawing.Point point)
+        {
+            if (point.X < screen.Bounds.Left)
+                return Direction.Leftward;
+            else if (point.X > screen.Bounds.Right)
+                return Direction.Rightward;
+            else if (point.Y < screen.Bounds.Top)
+                return Direction.Upward;
+            else if (point.Y > screen.Bounds.Bottom)
+                return Direction.Downward;
+            else
+                return null;
+        }
+
         public static string ExtendedScreenBounds(this Screen screen)
         {
             return $"{screen.Bounds} t{screen.Bounds.Top} b{screen.Bounds.Bottom} l{screen.Bounds.Left} r{screen.Bounds.Right}";

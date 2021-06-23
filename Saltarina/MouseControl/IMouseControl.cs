@@ -1,6 +1,8 @@
-﻿namespace Saltarina.MouseControl
+﻿using System;
+
+namespace Saltarina.MouseControl
 {
-    public interface IMouseControl
+    public interface IMouseControl : IDisposable
     {
         void MouseMove(int x, int y);
     }
