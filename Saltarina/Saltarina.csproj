@@ -8,10 +8,11 @@
     <AssemblyName>Saltarina</AssemblyName>
     <RootNamespace>Saltarina</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <ApplicationIcon>frog.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\comet.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\comet.ico" />
     <None Remove="Resources\frog.ico" />
   </ItemGroup>
 
@@ -27,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\comet.ico" />
     <Resource Include="Resources\frog.ico" />
   </ItemGroup>
 
