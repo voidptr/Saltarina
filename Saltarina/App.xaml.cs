@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Hardcodet.Wpf.TaskbarNotification;
 using Microsoft.Extensions.Logging;
+using Saltarina.ViewModels;
 using Serilog;
 using Serilog.Events;
 using System;
@@ -20,10 +21,11 @@ namespace Saltarina
     /// </summary>
     public partial class App : Application
     {
-        private TaskbarIcon tb;
+        private TaskbarIcon trayIcon;
+        private Service service;
+
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            tb = (TaskbarIcon)FindResource("TrayIcon");
             try
             {
                 Serilog.Debugging.SelfLog.Enable(Console.Error);
@@ -36,8 +38,11 @@ namespace Saltarina
                 {
                     LogStartup(scope);
 
-                    var window = scope.Resolve<MainWindow>();
-                    window.Show();
+                    service = scope.Resolve<Service>();
+
+                    trayIcon = (TaskbarIcon)FindResource("TrayIcon");
+                    trayIcon.DataContext = scope.Resolve<INotifyIconViewModel>();
+
                 }
                 catch (Exception ex)
                 {
@@ -89,7 +94,11 @@ namespace Saltarina
                 .As(typeof(ILogger<>))
                 .SingleInstance();
 
-            // Add the Window classes 
+            // Add the Service class
+            builder.RegisterType<Service>()
+                .AsSelf();
+
+            // Add the Window class
             builder.RegisterType<MainWindow>()
                 .AsSelf();
 

@@ -12,19 +12,13 @@ namespace Saltarina
     public partial class MainWindow : Window
     {
         private ILogger<MainWindow> _logger;
-        private IDisplayManager _screenManager;
-        private IMouseControl _mouseControl;
 
         public IAboutViewModel AboutViewModel_DataContext { get; set; }
 
         public MainWindow(ILogger<MainWindow> logger,
-            IAboutViewModel aboutViewModel,
-            IDisplayManager screenManager,
-            IMouseControl mouseControl)
+            IAboutViewModel aboutViewModel)
         {
             _logger = logger;
-            _screenManager = screenManager;
-            _mouseControl = mouseControl;
 
             InitializeComponent();
             DataContext = this;
