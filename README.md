@@ -5,5 +5,5 @@ Saltarina maps your monitor arrangement, and watches your mouse position. When y
 
 Saltarina may also be set up to AutoStart on login.
 
-![](saltarina_usage.jpeg)
+![](saltarina_usage.jpg)
 
