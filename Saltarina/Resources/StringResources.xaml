@@ -5,7 +5,7 @@
     <!-- String resource that can be localized -->
     <system:String x:Key="generic_main_window_title">Saltarina</system:String>
     <system:String x:Key="generic_main_window_settings_tab_title">Settings</system:String>
-    <system:String x:Key="generic_main_window_about_tab_title">About</system:String>
+    <system:String x:Key="generic_main_window_about_tab_title">About Saltarina</system:String>
     <system:String x:Key="generic_about_window_title">About Saltarina!</system:String>
     <system:String x:Key="generic_tray_tooltip">Saltarina: Mouse Window-hop Control</system:String>
 

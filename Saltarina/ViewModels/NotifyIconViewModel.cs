@@ -1,6 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Win32;
 using System;
+using System.Diagnostics;
+using System.Reflection;
 using System.Windows;
+
 using System.Windows.Input;
 
 namespace Saltarina.ViewModels
@@ -20,6 +24,34 @@ namespace Saltarina.ViewModels
         {
             _logger = logger;
             _mainWindowFactory = mainWindowFactory;
+
+            _autoStartIsChecked = (Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true)
+                            .GetValue(FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).ProductName) != null);
+        }
+
+        private bool _autoStartIsChecked;
+        public bool AutoStartIsChecked
+        {
+            get
+            {                
+                return _autoStartIsChecked;
+            }
+            set
+            {
+                if (value)
+                {
+                    Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true)
+                            .SetValue(FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).ProductName,
+                                System.Windows.Forms.Application.ExecutablePath);
+                }
+                else
+                {
+                    Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true)
+                            .DeleteValue(FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).ProductName, false);
+                }
+
+                _autoStartIsChecked = value;
+            }
         }
 
         /// <summary>
@@ -67,5 +99,32 @@ namespace Saltarina.ViewModels
                 return new DelegateCommand { CommandAction = () => Application.Current.Shutdown() };
             }
         }
+
+        //public ICommand ToggleAutoStart
+        //{
+        //    get
+        //    {
+        //        if (AutoStartIsChecked)
+        //        {
+        //            _logger.LogDebug($"{nameof(ToggleAutoStart)} checked");
+        //            return new DelegateCommand
+        //            {
+        //                CommandAction = () =>
+                            
+        //            };
+        //        }
+        //        else
+        //        {
+        //            _logger.LogDebug($"{nameof(ToggleAutoStart)} notchecked");
+        //            return new DelegateCommand
+        //            {
+        //                CommandAction = () =>
+                            
+        //            };
+        //        }
+
+                
+        //    }
+        //}
     }
 }

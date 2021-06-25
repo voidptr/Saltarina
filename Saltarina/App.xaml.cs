@@ -5,13 +5,10 @@ using Saltarina.ViewModels;
 using Serilog;
 using Serilog.Events;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Saltarina
@@ -37,6 +34,12 @@ namespace Saltarina
                 try
                 {
                     LogStartup(scope);
+
+                    if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location)).Count() > 1)
+                    {
+                        logger.LogCritical($"{FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location).ProductName} is already running. Shutting down.");
+                        Current?.Shutdown();
+                    }
 
                     service = scope.Resolve<Service>();
 

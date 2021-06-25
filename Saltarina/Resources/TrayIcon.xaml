@@ -4,7 +4,9 @@
                     xmlns:local="clr-namespace:Saltarina.ViewModels">
 
     <ContextMenu x:Shared="false" x:Key="SysTrayMenu">
-        <MenuItem Header="Settings" Command="{Binding ShowWindowCommand}" />
+        <MenuItem Header="Enable AutoStart" IsCheckable="True" 
+                  IsChecked="{Binding AutoStartIsChecked}" />
+        <MenuItem Header="About Saltarina" Command="{Binding ShowWindowCommand}" />
         <!--<MenuItem Header="Hide Window" Command="{Binding HideWindowCommand}" />-->
         <Separator />
         <MenuItem Header="Exit" Command="{Binding ExitApplicationCommand}" />

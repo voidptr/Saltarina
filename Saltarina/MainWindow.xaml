@@ -7,16 +7,14 @@
         xmlns:uc="clr-namespace:Saltarina.UserControls" 
         mc:Ignorable="d"
         Title="{DynamicResource generic_main_window_title}" 
-        Height="215" Width="400">
+        Height="350" Width="300">
     <Grid>        
         <DockPanel>
-            <TabControl>
+            <TabControl
+                Margin="5">
                 <TabItem Header="{DynamicResource generic_main_window_about_tab_title}">
-                    <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
-                        <uc:About DataContext="{Binding AboutViewModel_DataContext}"/>
-                    </DockPanel>
+                    <uc:About DataContext="{Binding AboutViewModel_DataContext}"/>
                 </TabItem>
-                <TabItem Header="{DynamicResource generic_main_window_settings_tab_title}"/>
             </TabControl>
         </DockPanel>
     </Grid>

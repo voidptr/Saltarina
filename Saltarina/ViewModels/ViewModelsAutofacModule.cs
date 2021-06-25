@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using System.IO.Abstractions;
 
 namespace Saltarina.ViewModels
 {
@@ -14,6 +15,10 @@ namespace Saltarina.ViewModels
             builder.RegisterType<AboutViewModel>()
                 .As<IAboutViewModel>()
                 .SingleInstance();
+
+            // Filesystem Abstraction
+            builder.RegisterType<FileSystem>()
+                .As<IFileSystem>();
         }
     }   
 }
