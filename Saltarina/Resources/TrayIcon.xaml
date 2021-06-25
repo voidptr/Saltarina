@@ -15,7 +15,7 @@
     <!-- Globally declared notify icon -->
     <tb:TaskbarIcon x:Key="TrayIcon"
 					IconSource="comet.ico"
-					ToolTipText="Saltarina: Window-spanning Mouse Control" 
+					ToolTipText="Saltarina: Screen-spanning Mouse Control" 
 					DoubleClickCommand="{Binding ShowWindowCommand}"
                     ContextMenu="{StaticResource SysTrayMenu}">
 

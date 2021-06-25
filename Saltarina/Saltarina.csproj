@@ -9,6 +9,8 @@
     <RootNamespace>Saltarina</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Resources\comet.ico</ApplicationIcon>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>Saltarina.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>

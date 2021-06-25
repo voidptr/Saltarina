@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LICENSE.md = LICENSE.md
 		NuGet.config = NuGet.config
 		README.md = README.md
-		..\..\..\Desktop\saltarina_usage.jpg = ..\..\..\Desktop\saltarina_usage.jpg
+		saltarina_usage.jpg = saltarina_usage.jpg
 	EndProjectSection
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{96F3C989-CE72-4BD5-82A0-346612CEC327}"

@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_533CF8ECCEA14A37AAB790B2CFCCCAFF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_695B523DDCF24B8D8480D8FADC1440AB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -55,6 +61,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -71,6 +93,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -106,6 +136,26 @@
             {
             "SourcePath" = "8:..\\README.md"
             "TargetName" = "8:README.md"
+            "Tag" = "8:"
+            "Folder" = "8:_9D60EE809D5B41E59D66C73F58F199FF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_533CF8ECCEA14A37AAB790B2CFCCCAFF"
+            {
+            "SourcePath" = "8:..\\saltarina_usage.jpg"
+            "TargetName" = "8:saltarina_usage.jpg"
             "Tag" = "8:"
             "Folder" = "8:_9D60EE809D5B41E59D66C73F58F199FF"
             "Condition" = "8:"
@@ -219,7 +269,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Saltarina"
         "ProductCode" = "8:{2101062E-1F87-4A4F-A7BD-BFA237979C1A}"
-        "PackageCode" = "8:{1AEDE825-A578-4E20-81F7-A448B8C866E1}"
+        "PackageCode" = "8:{364BF65E-3DFC-40B7-BF9B-246E8D86C663}"
         "UpgradeCode" = "8:{277C8595-E882-4403-9A0B-BD75957A7AAA}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -227,7 +277,7 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Batch6"
+        "Manufacturer" = "8:Saltarina"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:Saltarina"
