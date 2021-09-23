@@ -78,7 +78,8 @@ namespace Saltarina
             // set up logging
             builder.Register<Serilog.ILogger>((c, p) =>
             {
-                var logfile = "log.txt";
+                var tempDir = Environment.GetEnvironmentVariable("TEMP");
+                var logfile = $"{tempDir}\\Saltarina\\log.txt";
 
                 var logconfig = new LoggerConfiguration()
                     .WriteTo.File(logfile);

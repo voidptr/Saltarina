@@ -11,6 +11,7 @@
     <ApplicationIcon>Resources\comet.ico</ApplicationIcon>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>Saltarina.snk</AssemblyOriginatorKeyFile>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
